@@ -1,0 +1,112 @@
+<!-- cadastro de aluno,  carga horaria do curso, carga horaria que ja fez  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        main {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: gray;
+            width: 400px;
+            text-align: center;
+            border: 2px solid white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: white;
+        }
+
+        label,
+        input,
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: #3e8e41;
+        }
+
+        #resposta {
+            color: white;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class='container'>
+            <h1>Tabuada</h1>
+            <form onsubmit="tabuada(); return false;">
+                <label for="operacao">Operação:</label>
+                <select name="operacao" id="operacao">
+                    <option value="*">Multiplicação</option>
+                    <option value="/">Divisão</option>
+                    <option value="-">Subtração</option>
+                    <option value="+">Adição</option>
+                </select>
+                <label for="num">Número:</label>
+                <input id="num" type="number" required autofocus>
+                <button type="submit">Exibir</button>
+                <div id='resposta'></div>
+            </form>
+
+        </div>
+
+    </main>
+    <script>
+        function tabuada() {
+            let operacao = document.getElementById('operacao').value;
+            let num = parseInt(document.getElementById("num").value);
+            let tabuada = '';
+            let result;
+            for (var count = 1; count <= 10; count++) {
+                if (operacao == "/") {
+                    result = count / num;
+                } else if (operacao == "*") {
+                    result = count * num;
+                } else if (operacao == "-") {
+                    result = count - num;
+                } else if (operacao == "+") {
+                    result = count + num;
+                }
+                tabuada += count + " " + operacao + " " + num + " = " + result + "<br>";
+            }
+            document.getElementById('resposta').innerHTML = tabuada;
+        }
+    </script>
+</body>
+
+</html>
